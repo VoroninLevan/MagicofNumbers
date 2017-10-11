@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Magic of Numbers</string>
+
+    <string name="inputHint">\?</string>
+</resources>
