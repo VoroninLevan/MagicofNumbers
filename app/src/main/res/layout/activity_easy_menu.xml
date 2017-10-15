@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#0099cc">
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#0099cc"
+tools:context="comvoroninlevan.httpsgithub.magicofnumbers.EasyMenuActivity">
 
     <LinearLayout
         android:layout_weight="1"
@@ -22,19 +22,19 @@
             android:orientation="vertical">
 
             <ImageButton
-                android:id="@+id/toEasy"
+                android:id="@+id/numbers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onClick"/>
 
             <ImageButton
-                android:id="@+id/toNormal"
+                android:id="@+id/tracing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onClick"/>
 
             <ImageButton
-                android:id="@+id/toHard"
+                android:id="@+id/choosing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onClick"/>
