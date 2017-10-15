@@ -6,33 +6,36 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-public class FullscreenActivity extends AppCompatActivity {
+/**
+ * Created by Levan on 14.10.2017.
+ */
+
+public class EasyMenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fullscreen);
+        setContentView(R.layout.activity_easy_menu);
 
         hide();
 
     }
 
     public void onClick(View view){
-
         switch (view.getId()){
-            case R.id.toEasy:
-                Intent easyMenuActivity = new Intent(FullscreenActivity.this, EasyMenuActivity.class);
-                startActivity(easyMenuActivity);
+            case R.id.numbers:
+                Intent numbersActivity = new Intent(EasyMenuActivity.this, NumbersActivity.class);
+                startActivity(numbersActivity);
                 break;
-            case R.id.toNormal:
+            case R.id.tracing:
                 //TODO
-                //Intent normalMenuActivity = new Intent(FullscreenActivity.this, NormalMenuActivity.class);
-                //startActivity(normalMenuActivity);
+                //Intent tracingActivity = new Intent(EasyMenuActivity.this, TracingActivity.class);
+                //startActivity(tracingActivity);
                 break;
-            case R.id.toHard:
+            case R.id.choosing:
                 //TODO
-                //Intent hardMenuActivity = new Intent(FullscreenActivity.this, HardMenuActivity.class);
-                //startActivity(hardMenuActivity);
+                //Intent choosingActivity = new Intent(EasyMenuActivity.this, ChoosingActivity.class);
+                //startActivity(choosingActivity);
                 break;
         }
     }
@@ -44,4 +47,5 @@ public class FullscreenActivity extends AppCompatActivity {
             actionBar.hide();
         }
     }
+
 }

@@ -13,11 +13,12 @@ import android.widget.ImageView;
 import java.util.Random;
 
 /**
- * Created by Levan on 06.10.2017.
+ * Created by Levan on 12.10.2017.
  */
 
-public class AdditionActivity extends AppCompatActivity {
+public class SubtractionActivity extends AppCompatActivity{
 
+    //TODO
     private int result, userInput;
     private Animation slide_down, slide_up;
     private ImageView firstNum, secondNum, hint, answer, hintDoor;
@@ -38,7 +39,7 @@ public class AdditionActivity extends AppCompatActivity {
 
         hide();
         ImageView sign = (ImageView)findViewById(R.id.sign);
-        sign.setImageResource(R.drawable.addition);
+        sign.setImageResource(R.drawable.subtraction);
         userInput = -1;
         markArray = new boolean[10];
 
@@ -77,6 +78,9 @@ public class AdditionActivity extends AppCompatActivity {
         secondNum = (ImageView)findViewById(R.id.secondNumber);
         hint = (ImageView)findViewById(R.id.hintOne);
         hint.setVisibility(View.INVISIBLE);
+        //TODO
+        //hintTwo = (ImageView)findViewById(R.id.hintTwo);
+        //hintTwo.setVisibility(View.INVISIBLE);
         answer = (ImageView)findViewById(R.id.answer);
 
         hintDoor = (ImageView)findViewById(R.id.hintDoor);
@@ -144,12 +148,12 @@ public class AdditionActivity extends AppCompatActivity {
         int x, y;
         Random random = new Random();
         x = random.nextInt(10);
-        y = random.nextInt(10 - x);
+        y = random.nextInt(x);
 
         setImageFirstNumQuiz(x);
         setImageSecondNumQuiz(y);
 
-        result = x + y;
+        result = x - y;
     }
 
     private void setImageFirstNumQuiz(int x){
@@ -437,20 +441,24 @@ public class AdditionActivity extends AppCompatActivity {
 
     private void showHint(){
         //Show hint on showHint button click
-
+        //hideHintSign();
         if(!isHintShow){
             isHintShow = true;
             hintDoor.startAnimation(slide_down);
             hintDoor.setVisibility(View.INVISIBLE);
             showHint.setImageResource(R.drawable.lever_down);
 
-            setHintImage();
+            setHintOneImage();
             hint.startAnimation(slide_up);
             hint.setVisibility(View.VISIBLE);
+
+            //setHintTwoImage();
+            //hintTwo.startAnimation(slide_up);
+            //hintTwo.setVisibility(View.VISIBLE);
         }
     }
 
-    private void setHintImage(){
+    private void setHintOneImage(){
         switch(result){
             case 0:
                 hint.setImageResource(R.drawable.apple_hint_zero);
@@ -493,6 +501,8 @@ public class AdditionActivity extends AppCompatActivity {
             showHint.setImageResource(R.drawable.lever_up);
             hint.startAnimation(slide_down);
             hint.setVisibility(View.INVISIBLE);
+            //hintTwo.startAnimation(slide_down);
+            //hintTwo.setVisibility(View.INVISIBLE);
             hintDoor.startAnimation(slide_up);
             hintDoor.setVisibility(View.VISIBLE);
         }
