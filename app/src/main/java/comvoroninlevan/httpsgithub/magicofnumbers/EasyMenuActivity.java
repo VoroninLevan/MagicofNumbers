@@ -33,9 +33,8 @@ public class EasyMenuActivity extends AppCompatActivity {
                 //startActivity(tracingActivity);
                 break;
             case R.id.choosing:
-                //TODO
-                //Intent choosingActivity = new Intent(EasyMenuActivity.this, ChoosingActivity.class);
-                //startActivity(choosingActivity);
+                Intent choosingActivity = new Intent(EasyMenuActivity.this, ChoosingActivity.class);
+                startActivity(choosingActivity);
                 break;
         }
     }
