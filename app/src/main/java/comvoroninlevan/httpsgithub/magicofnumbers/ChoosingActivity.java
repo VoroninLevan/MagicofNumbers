@@ -1,10 +1,13 @@
 package comvoroninlevan.httpsgithub.magicofnumbers;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -18,6 +21,7 @@ public class ChoosingActivity extends AppCompatActivity {
 
     private ImageView answerOne, answerTwo, answerThree, answerFour;
     private int answer;
+    private ImageButton nextQuiz;
     private MediaPlayerSingleton mediaPlayer = MediaPlayerSingleton.getInstance();
 
     @Override
@@ -53,6 +57,27 @@ public class ChoosingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkAnswer(v);
+            }
+        });
+
+        nextQuiz = (ImageButton)findViewById(R.id.nextQuiz);
+        nextQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                generateNewQuiz();
+                activateClickOnImg();
+                nextQuizHide();
+                setTransparentBackground();
+            }
+        });
+        nextQuizHide();
+
+        ImageButton backToEasyMenu = (ImageButton)findViewById(R.id.backToEasyMenu);
+        backToEasyMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent backToMenu = new Intent(ChoosingActivity.this, EasyMenuActivity.class);
+                startActivity(backToMenu);
             }
         });
 
@@ -96,7 +121,7 @@ public class ChoosingActivity extends AppCompatActivity {
 
 
     private void hide() {
-        // Hide UI
+        // Hide action bar
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
@@ -104,6 +129,7 @@ public class ChoosingActivity extends AppCompatActivity {
     }
 
     private void generateNewQuiz(){
+        // From here new quiz starts to generate
         ArrayList<Integer> idList = fillArray();
         Random random = new Random();
         createImgIdList(idList, random);
@@ -111,6 +137,7 @@ public class ChoosingActivity extends AppCompatActivity {
     }
 
     private ArrayList<Integer> fillArray(){
+        // Fill ArrayList<Integer> with values 0-9
         ArrayList<Integer> list = new ArrayList<>();
         for(int x = 0; x < 10; x++){
             list.add(x, x);
@@ -119,6 +146,7 @@ public class ChoosingActivity extends AppCompatActivity {
     }
 
     private void createImgIdList(ArrayList<Integer> intList, Random random){
+        // Create ArrayList<Integer> to store images resource ids
         ArrayList<Integer> imgIdList = new ArrayList<>();
         for(int x = 0; x < 4; x++){
             int index = random.nextInt(intList.size());
@@ -137,6 +165,7 @@ public class ChoosingActivity extends AppCompatActivity {
     }
 
     private int getResId(int picker){
+        // Get resource id of images 0-9
         switch (picker){
             case 0:
                 return R.drawable.zero;
@@ -172,40 +201,33 @@ public class ChoosingActivity extends AppCompatActivity {
             switch (place){
                 case 0:
                     answerOne.setImageResource(imgIdList.get(x));
-                    if(x == 0){
-                        answerOne.setTag(1);
-                    }else{
-                        answerOne.setTag(0);
-                    }
+                    setTag(answerOne, x);
                     break;
                 case 1:
                     answerTwo.setImageResource(imgIdList.get(x));
-                    if(x == 0){
-                        answerTwo.setTag(1);
-                    }else{
-                        answerTwo.setTag(0);
-                    }
+                    setTag(answerTwo, x);
                     break;
                 case 2:
                     answerThree.setImageResource(imgIdList.get(x));
-                    if(x == 0){
-                        answerThree.setTag(1);
-                    }else{
-                        answerThree.setTag(0);
-                    }
+                    setTag(answerThree, x);
                     break;
                 case 3:
                     answerFour.setImageResource(imgIdList.get(x));
-                    if(x == 0){
-                        answerFour.setTag(1);
-                    }else{
-                        answerFour.setTag(0);
-                    }
+                    setTag(answerFour, x);
                     break;
             }
         }
 
         setAudio(answer);
+    }
+
+    private void setTag(View view, int x){
+        // Set tag to ImageView to mark the wright answer
+        if(x == 0){
+            view.setTag(1);
+        }else{
+            view.setTag(0);
+        }
     }
 
     private ArrayList<Integer> returnPlaceList(){
@@ -230,11 +252,47 @@ public class ChoosingActivity extends AppCompatActivity {
     }
 
     private void checkAnswer(View v){
+        // Check user input and grade the answer
         int tag = (Integer)v.getTag();
         if(tag == 1){
             v.setBackgroundResource(R.color.wrightAnswer);
+            deactivateClickOnImg();
+            nextQuizShow();
         }else{
             v.setBackgroundResource(R.color.wrongAnswer);
+            deactivateClickOnImg();
+            nextQuizShow();
         }
+    }
+
+    private void deactivateClickOnImg(){
+        // Deactivate click event on Img views
+        answerOne.setEnabled(false);
+        answerTwo.setEnabled(false);
+        answerThree.setEnabled(false);
+        answerFour.setEnabled(false);
+    }
+
+    private void activateClickOnImg(){
+        // Deactivate click event on Img views
+        answerOne.setEnabled(true);
+        answerTwo.setEnabled(true);
+        answerThree.setEnabled(true);
+        answerFour.setEnabled(true);
+    }
+
+    private void nextQuizHide(){
+        nextQuiz.setVisibility(View.INVISIBLE);
+    }
+
+    private void nextQuizShow(){
+        nextQuiz.setVisibility(View.VISIBLE);
+    }
+
+    private void setTransparentBackground(){
+        answerOne.setBackgroundColor(Color.TRANSPARENT);
+        answerTwo.setBackgroundColor(Color.TRANSPARENT);
+        answerThree.setBackgroundColor(Color.TRANSPARENT);
+        answerFour.setBackgroundColor(Color.TRANSPARENT);
     }
 }

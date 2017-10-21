@@ -8,4 +8,5 @@
 
     <color name="wrightAnswer">#B2FF59</color>
     <color name="wrongAnswer">#FF6E40</color>
+    <color name="transparent">#80000000</color>
 </resources>

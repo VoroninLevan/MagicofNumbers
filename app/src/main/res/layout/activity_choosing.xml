@@ -69,10 +69,26 @@
 
     </LinearLayout>
 
-    <ImageView
+    <RelativeLayout
         android:id="@+id/hintImg"
         android:layout_weight="6"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" >
+
+        <ImageButton
+            android:id="@+id/backToEasyMenu"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageButton
+            android:id="@+id/nextQuiz"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
 
 </LinearLayout>
