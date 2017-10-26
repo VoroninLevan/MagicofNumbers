@@ -40,6 +40,12 @@
             android:theme="@style/FullscreenTheme">
         </activity>
         <activity
+            android:name=".DragAndDropActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
+            android:theme="@style/FullscreenTheme">
+        </activity>
+        <activity
             android:name=".AdditionActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/FullscreenTheme">
