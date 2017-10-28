@@ -1,6 +1,8 @@
 package comvoroninlevan.httpsgithub.magicofnumbers;
 
 import android.content.ClipData;
+import android.content.ClipDescription;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -26,32 +27,61 @@ public class DragAndDropActivity extends AppCompatActivity {
     ArrayList<Integer> wrightAnswers;
     int[] imgTest;
 
+    private View.OnTouchListener onTouchListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View view, MotionEvent event) {
+            ClipData.Item item = new ClipData.Item(view.getTag().toString());
+            String[] mimeTypes = {ClipDescription.MIMETYPE_TEXT_PLAIN};
+            ClipData dragData = new ClipData(view.getTag().toString(),mimeTypes, item);
+            View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(
+                    view);
+            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
+                view.startDragAndDrop(dragData, shadowBuilder, view, 0);
+            }else{
+                view.startDrag(dragData, shadowBuilder, view, 0);
+            }
+            view.setVisibility(View.INVISIBLE);
+            return true;
+        }
+    };
+
     private View.OnDragListener onDragListener = new View.OnDragListener() {
         @Override
         public boolean onDrag(View v, DragEvent event) {
-            int action = event.getAction();
             switch (event.getAction()) {
                 case DragEvent.ACTION_DRAG_STARTED:
-                    // do nothing
-                    break;
+                    if (event.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
+
+                        v.setBackgroundColor(Color.BLUE);
+                        v.invalidate();
+                        return true;
+
+                    }
+                    return false;
                 case DragEvent.ACTION_DRAG_ENTERED:
-                    //v.setBackgroundDrawable(enterShape);
-                    break;
+                    v.setBackgroundColor(Color.GREEN);
+                    v.invalidate();
+                    return true;
                 case DragEvent.ACTION_DRAG_EXITED:
-                    //v.setBackgroundDrawable(normalShape);
-                    break;
+                    v.setBackgroundColor(Color.BLUE);
+                    v.invalidate();
+                    return true;
                 case DragEvent.ACTION_DROP:
                     ClipData.Item item = event.getClipData().getItemAt(0);
-                    // Dropped, reassign View to ViewGroup
-                    View view = (View) event.getLocalState();
-                    ViewGroup owner = (ViewGroup) view.getParent();
-                    owner.removeView(view);
-                    ImageView container = (ImageView) v;
-                    container.setImageResource(R.drawable.one);
-                    view.setVisibility(View.VISIBLE);
+                    int tag = Integer.parseInt(item.getText().toString());
+                    if((Integer)v.getTag() == tag) {
+                        ImageView currentImageView = (ImageView) v;
+                        currentImageView.setImageResource(setDrawablesOnImages(v));
+                        v.setOnDragListener(null);
+                    }else{
+                        v.setBackgroundColor(Color.RED);
+                    }
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
-                    //v.setBackgroundDrawable(normalShape);
+                    if(!event.getResult()){
+                        View view = (View) event.getLocalState();
+                        view.setVisibility(View.VISIBLE);
+                    }
                 default:
                     break;
             }
@@ -68,67 +98,18 @@ public class DragAndDropActivity extends AppCompatActivity {
         imgTest = new int[2];
 
         imageOne = (ImageView)findViewById(R.id.imageOne);
-        imageOne.setOnDragListener(new View.OnDragListener() {
-            @Override
-            public boolean onDrag(View v, DragEvent event) {
-                int action = event.getAction();
-                switch (event.getAction()) {
-                    case DragEvent.ACTION_DRAG_STARTED:
-                        // do nothing
-                        break;
-                    case DragEvent.ACTION_DRAG_ENTERED:
-                        //v.setBackgroundDrawable(enterShape);
-                        break;
-                    case DragEvent.ACTION_DRAG_EXITED:
-                        //v.setBackgroundDrawable(normalShape);
-                        break;
-                    case DragEvent.ACTION_DROP:
-                        ClipData.Item item = event.getClipData().getItemAt(0);
-                        // Dropped, reassign View to ViewGroup
-                        View view = (View) event.getLocalState();
-                        ViewGroup owner = (ViewGroup) view.getParent();
-                        owner.removeView(view);
-                        ImageView container = (ImageView) v;
-                        container.setImageResource(R.drawable.one);
-                        view.setVisibility(View.VISIBLE);
-                        break;
-                    case DragEvent.ACTION_DRAG_ENDED:
-                        //v.setBackgroundDrawable(normalShape);
-                    default:
-                        break;
-                }
-                return true;
-            }
-        });
         imageTwo = (ImageView)findViewById(R.id.imageTwo);
         imageThree = (ImageView)findViewById(R.id.imageThree);
         imageFour = (ImageView)findViewById(R.id.imageFour);
 
         answerOne = (ImageView)findViewById(R.id.answerOne);
-        answerOne.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                    ClipData data = ClipData.newPlainText("", "");
-                    imgTest[0] = R.drawable.one;
-                    View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(
-                            view);
-                    if(Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
-                        view.startDragAndDrop(data, shadowBuilder, null, 0);
-                    }else{
-                        view.startDrag(data, shadowBuilder, null, 0);
-                    }
-                    view.setVisibility(View.INVISIBLE);
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        });
-
+        answerOne.setOnTouchListener(onTouchListener);
         answerTwo = (ImageView)findViewById(R.id.answerTwo);
+        answerTwo.setOnTouchListener(onTouchListener);
         answerThree = (ImageView)findViewById(R.id.answerThree);
+        answerThree.setOnTouchListener(onTouchListener);
         answerFour = (ImageView)findViewById(R.id.answerFour);
+        answerFour.setOnTouchListener(onTouchListener);
 
         wrightAnswers = new ArrayList<>();
         generateQuiz();
@@ -221,6 +202,7 @@ public class DragAndDropActivity extends AppCompatActivity {
             int tag = (Integer)view.getTag();
             if(tag == 1){
                 view.setImageResource(R.mipmap.ic_launcher);
+                view.setOnDragListener(onDragListener);
                 view.setTag(quiz[x]);
                 wrightAnswers.add(y, quiz[x]);
                 x++;
@@ -228,6 +210,7 @@ public class DragAndDropActivity extends AppCompatActivity {
             }else{
                 view.setTag(quiz[x]);
                 view.setImageResource(setDrawablesOnImages(view));
+                view.setOnDragListener(null);
                 x++;
             }
         }
@@ -245,7 +228,7 @@ public class DragAndDropActivity extends AppCompatActivity {
         return quiz;
     }
 
-    private int setDrawablesOnImages(ImageView view){
+    private int setDrawablesOnImages(View view){
         int picker = (Integer)view.getTag();
 
         switch (picker) {
