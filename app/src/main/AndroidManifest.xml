@@ -46,13 +46,27 @@
             android:theme="@style/FullscreenTheme">
         </activity>
         <activity
+            android:name=".NormalMenuActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
+            android:theme="@style/FullscreenTheme">
+        </activity>
+        <activity
             android:name=".AdditionActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme">
         </activity>
         <activity
             android:name=".SubtractionActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
+            android:theme="@style/FullscreenTheme">
+        </activity>
+        <activity
+            android:name=".ComplexActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme">
         </activity>
     </application>
