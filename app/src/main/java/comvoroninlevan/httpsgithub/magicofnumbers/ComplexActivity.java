@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -21,9 +22,10 @@ public class ComplexActivity extends AppCompatActivity {
     private RelativeLayout leftBlock, rightBlock;
     private ImageView numOneOne, numOneTwo, numTwoOne, numTwoTwo, numThreeOne, numThreeTwo,
             numFourOne, numFourTwo;
+    private ImageView answerOne, answerTwo;
     private int level = 10;
-    private int numberLeft, resultBracket, numberRight;
-    private boolean additionLeft, additionBracket, additionRight;
+    private int numberLeft, resultBracket, numberRight, result, answer;
+    private boolean additionLeft, additionBracket, additionRight, leftPart;
     private String leftFlag = "left";
     private String bracketFlag = "bracket";
     private String rightFlag = "right";
@@ -51,6 +53,9 @@ public class ComplexActivity extends AppCompatActivity {
         numThreeTwo = (ImageView)findViewById(R.id.numThreeTwo);
         numFourOne = (ImageView)findViewById(R.id.numFourOne);
         numFourTwo = (ImageView)findViewById(R.id.numFourTwo);
+
+        answerOne = (ImageView)findViewById(R.id.answerOne);
+        answerTwo = (ImageView)findViewById(R.id.answerTwo);
 
         generateQuiz();
     }
@@ -128,8 +133,9 @@ public class ComplexActivity extends AppCompatActivity {
         }
     }
 
-    private void setNumbersQuizWithLeft(boolean leftPart){
+    private void setNumbersQuizWithLeft(boolean left){
         setNumbersInBracket();
+        leftPart = left;
         if(leftPart){
             int[] nums = getRandomNumbers();
             int leftNumber = transFromFromArrayToInt(nums);
@@ -143,10 +149,13 @@ public class ComplexActivity extends AppCompatActivity {
             }
             if(nums[1] == -1){
                 numOneTwo.setImageResource(setDrawableNum(nums[0]));
+                numberLeft = nums[0];
             }else{
                 numOneOne.setImageResource(setDrawableNum(nums[0]));
                 numOneTwo.setImageResource(setDrawableNum(nums[1]));
+                numberLeft = transFromFromArrayToInt(nums);
             }
+            setResult();
         }else{
             int[] nums = getRandomNumbers();
             int rightNumber = transFromFromArrayToInt(nums);
@@ -160,10 +169,13 @@ public class ComplexActivity extends AppCompatActivity {
             }
             if(nums[1] == -1){
                 numFourTwo.setImageResource(setDrawableNum(nums[0]));
+                numberRight = nums[0];
             }else{
                 numFourOne.setImageResource(setDrawableNum(nums[0]));
                 numFourTwo.setImageResource(setDrawableNum(nums[1]));
+                numberRight = transFromFromArrayToInt(nums);
             }
+            setResult();
         }
     }
 
@@ -202,6 +214,22 @@ public class ComplexActivity extends AppCompatActivity {
             return numOne + numTwo;
         }else{
             return numOne - numTwo;
+        }
+    }
+
+    private void setResult(){
+        if(leftPart){
+            if(!additionLeft){
+                result = numberLeft - resultBracket;
+            }else{
+                result = numberLeft + resultBracket;
+            }
+        }else{
+            if(!additionRight){
+                result = resultBracket - numberRight;
+            }else{
+                result = resultBracket + numberRight;
+            }
         }
     }
 
@@ -256,5 +284,37 @@ public class ComplexActivity extends AppCompatActivity {
         }
         String full = firstNum + secondNum;
         return(Integer.parseInt(full));
+    }
+
+    public void setAnswer(View view){
+        setDrawablesAnswer(Integer.parseInt(view.getTag().toString()));
+    }
+
+    private void setDrawablesAnswer(int tag){
+        if(Integer.parseInt(answerOne.getTag().toString()) == -1){
+            answerOne.setImageResource(setDrawableNum(tag));
+            answerOne.setTag(tag);
+            answer = tag;
+        }else{
+            answerTwo.setImageResource(setDrawableNum(tag));
+            answerTwo.setTag(tag);
+            answer = getAnswer(answer, tag);
+        }
+    }
+
+    //TODO
+    // NumberFormatException: For input string: "12121211212"
+    private int getAnswer(int firstNum, int secondNum){
+        String first = String.valueOf(firstNum);
+        String second = String.valueOf(secondNum);
+        return (Integer.parseInt(first + second));
+    }
+
+    public void checkAnswer(View view){
+        if(result == answer){
+            Toast.makeText(this, "True", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "False", Toast.LENGTH_SHORT).show();
+        }
     }
 }
