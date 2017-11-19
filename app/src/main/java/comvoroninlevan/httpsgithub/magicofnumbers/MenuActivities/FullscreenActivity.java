@@ -31,9 +31,8 @@ public class FullscreenActivity extends AppCompatActivity {
                 startActivity(normalMenuActivity);
                 break;
             case R.id.toHard:
-                //TODO
-                //Intent hardMenuActivity = new Intent(FullscreenActivity.this, HardMenuActivity.class);
-                //startActivity(hardMenuActivity);
+                Intent hardMenuActivity = new Intent(FullscreenActivity.this, HardMenuActivity.class);
+                startActivity(hardMenuActivity);
                 break;
         }
     }

@@ -1,11 +1,13 @@
 package comvoroninlevan.httpsgithub.magicofnumbers.MenuActivities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import comvoroninlevan.httpsgithub.magicofnumbers.HardActivities.MultiplicationTableChooser;
 import comvoroninlevan.httpsgithub.magicofnumbers.R;
 
 /**
@@ -25,8 +27,8 @@ public class HardMenuActivity extends AppCompatActivity {
     public void onClick(View view){
         switch (view.getId()){
             case R.id.numbers:
-                /*Intent numbersActivity = new Intent(HardMenuActivity.this, NumbersActivity.class);
-                startActivity(numbersActivity);*/
+                Intent numbersActivity = new Intent(HardMenuActivity.this, MultiplicationTableChooser.class);
+                startActivity(numbersActivity);
                 break;
             case R.id.dragAndDrop:
                 /*Intent dragAndDropActivity = new Intent(HardMenuActivity.this, DragAndDropActivity.class);

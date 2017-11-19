@@ -7,10 +7,16 @@ package comvoroninlevan.httpsgithub.magicofnumbers.NormalActivities.Adapter;
 public class Nums {
 
     private int mNum;
+    private int mResult;
     private String mName;
 
     public Nums(int num){
         mNum = num;
+    }
+
+    public Nums(int num, int result){
+        mNum = num;
+        mResult = result;
     }
 
     public Nums(int num, String name){
@@ -20,6 +26,10 @@ public class Nums {
 
     public int getNum() {
         return mNum;
+    }
+
+    public int getResult(){
+        return mResult;
     }
 
     public String getName(){
