@@ -1,5 +1,6 @@
 package comvoroninlevan.httpsgithub.magicofnumbers.HardActivities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -7,6 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
+import comvoroninlevan.httpsgithub.magicofnumbers.HardActivities.Adapter.MultiplicationTableListAdapter;
+import comvoroninlevan.httpsgithub.magicofnumbers.NormalActivities.Adapter.Nums;
 import comvoroninlevan.httpsgithub.magicofnumbers.R;
 
 /**
@@ -22,13 +27,20 @@ public class MultiplicationTable extends AppCompatActivity {
 
         hide();
 
-        //TODO
-        /* firstNum -> receive with intent,
-        Fill Nums ArrayList
-        secondNum -> fill in adapter with Nums
-        make method to count multip result -> add to Nums -> fill the field
-         */
+        Intent intent = getIntent();
+        int firstNum = intent.getIntExtra("firstNum", 0);
+
+        ArrayList<Nums> item = new ArrayList<>();
+        for(int num = 1; num < 11; num++){
+            int result = firstNum * num;
+            item.add(new Nums(num, result));
+        }
+
+        MultiplicationTableListAdapter listAdapter =
+                new MultiplicationTableListAdapter(this, item, firstNum);
+
         ListView listView = (ListView)findViewById(R.id.listView);
+        listView.setAdapter(listAdapter);
     }
 
     private void hide() {

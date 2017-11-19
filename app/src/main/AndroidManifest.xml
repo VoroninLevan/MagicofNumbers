@@ -93,6 +93,18 @@
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme">
         </activity>
+        <activity
+            android:name=".HardActivities.MultiplicationTableChooser"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
+            android:theme="@style/FullscreenTheme">
+        </activity>
+        <activity
+            android:name=".HardActivities.MultiplicationTable"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
+            android:theme="@style/FullscreenTheme">
+        </activity>
     </application>
 
 </manifest>
