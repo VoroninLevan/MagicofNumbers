@@ -1,10 +1,15 @@
-package comvoroninlevan.httpsgithub.magicofnumbers;
+package comvoroninlevan.httpsgithub.magicofnumbers.MenuActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import comvoroninlevan.httpsgithub.magicofnumbers.EasyActivities.ChoosingActivity;
+import comvoroninlevan.httpsgithub.magicofnumbers.EasyActivities.DragAndDropActivity;
+import comvoroninlevan.httpsgithub.magicofnumbers.EasyActivities.NumbersActivity;
+import comvoroninlevan.httpsgithub.magicofnumbers.R;
 
 /**
  * Created by Levan on 14.10.2017.
@@ -27,10 +32,9 @@ public class EasyMenuActivity extends AppCompatActivity {
                 Intent numbersActivity = new Intent(EasyMenuActivity.this, NumbersActivity.class);
                 startActivity(numbersActivity);
                 break;
-            case R.id.tracing:
-                //TODO
-                //Intent tracingActivity = new Intent(EasyMenuActivity.this, TracingActivity.class);
-                //startActivity(tracingActivity);
+            case R.id.dragAndDrop:
+                Intent dragAndDropActivity = new Intent(EasyMenuActivity.this, DragAndDropActivity.class);
+                startActivity(dragAndDropActivity);
                 break;
             case R.id.choosing:
                 Intent choosingActivity = new Intent(EasyMenuActivity.this, ChoosingActivity.class);
@@ -40,6 +44,10 @@ public class EasyMenuActivity extends AppCompatActivity {
     }
 
     private void hide() {
+        View decorView = getWindow().getDecorView();
+        // Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
         // Hide UI
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

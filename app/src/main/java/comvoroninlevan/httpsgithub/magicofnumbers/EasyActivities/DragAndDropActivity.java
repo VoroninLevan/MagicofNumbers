@@ -1,20 +1,28 @@
-package comvoroninlevan.httpsgithub.magicofnumbers;
+package comvoroninlevan.httpsgithub.magicofnumbers.EasyActivities;
 
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.DragEvent;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import comvoroninlevan.httpsgithub.magicofnumbers.MenuActivities.EasyMenuActivity;
+import comvoroninlevan.httpsgithub.magicofnumbers.R;
+import comvoroninlevan.httpsgithub.magicofnumbers.ShowGradeDialog;
 
 /**
  * Created by Levan on 21.10.2017.
@@ -24,8 +32,9 @@ public class DragAndDropActivity extends AppCompatActivity {
 
     private ImageView imageOne, imageTwo, imageThree, imageFour;
     private ImageView answerOne, answerTwo, answerThree, answerFour;
-    ArrayList<Integer> wrightAnswers;
-    int[] imgTest;
+    private ArrayList<Integer> wrightAnswers;
+    private int wrightCounter = 0;
+    ShowGradeDialog showGradeDialog;
 
     private View.OnTouchListener onTouchListener = new View.OnTouchListener() {
         @Override
@@ -73,6 +82,12 @@ public class DragAndDropActivity extends AppCompatActivity {
                         ImageView currentImageView = (ImageView) v;
                         currentImageView.setImageResource(setDrawablesOnImages(v));
                         v.setOnDragListener(null);
+                        wrightCounter++;
+                        if(wrightCounter == 2){
+                            //Context actvitiyContext = DragAndDropActivity.this.getApplicationContext();
+                            //showGradeDialog.showGrade(actvitiyContext, EasyMenuActivity.class);
+                            //showGrade();
+                        }
                     }else{
                         v.setBackgroundColor(Color.RED);
                     }
@@ -94,8 +109,8 @@ public class DragAndDropActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drag_and_drop);
 
+        //showGradeDialog = new ShowGradeDialog(DragAndDropActivity.this);
         hide();
-        imgTest = new int[2];
 
         imageOne = (ImageView)findViewById(R.id.imageOne);
         imageTwo = (ImageView)findViewById(R.id.imageTwo);
@@ -191,6 +206,7 @@ public class DragAndDropActivity extends AppCompatActivity {
     }
 
     private void setTagsOnQuizImages(ArrayList<ImageView> imageViews){
+        //TODO
         //Based on 0,1 tags
         // 0 - set drawable num image in quiz
         // 1 - set drawable question mark in quiz
@@ -298,5 +314,51 @@ public class DragAndDropActivity extends AppCompatActivity {
             mixedAnswers = removeElement(mixedAnswers, index);
             view.setImageResource(setDrawablesOnImages(view));
         }
+    }
+
+    //TODO
+    /*private void showGrade(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.setNegativeButton("no", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+    }*/
+
+    public void nextQuiz(){
+        wrightCounter = 0;
+
+    }
+
+    public void showGrade(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.grade_dialog, null);
+        builder.setView(dialogView);
+        ImageView gradingDiamonds = (ImageView)dialogView.findViewById(R.id.gradingDiamonds);
+
+        ImageButton backToEasyMenu = (ImageButton)dialogView.findViewById(R.id.backToEasyMenu);
+        backToEasyMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DragAndDropActivity.this, EasyMenuActivity.class);
+                startActivity(intent);
+            }
+        });
+        ImageButton nextQuiz = (ImageButton)dialogView.findViewById(R.id.nextQuiz);
+
+        AlertDialog alertDialog = builder.create();
+        View decorView = alertDialog.getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+        alertDialog.show();
     }
 }

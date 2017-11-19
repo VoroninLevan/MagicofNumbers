@@ -5,6 +5,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import comvoroninlevan.httpsgithub.magicofnumbers.NumberFragments.EightFragment;
+import comvoroninlevan.httpsgithub.magicofnumbers.NumberFragments.FiveFragment;
+import comvoroninlevan.httpsgithub.magicofnumbers.NumberFragments.FourFragment;
+import comvoroninlevan.httpsgithub.magicofnumbers.NumberFragments.NineFragment;
+import comvoroninlevan.httpsgithub.magicofnumbers.NumberFragments.OneFragment;
+import comvoroninlevan.httpsgithub.magicofnumbers.NumberFragments.SevenFragment;
+import comvoroninlevan.httpsgithub.magicofnumbers.NumberFragments.SixFragment;
+import comvoroninlevan.httpsgithub.magicofnumbers.NumberFragments.ThreeFragment;
+import comvoroninlevan.httpsgithub.magicofnumbers.NumberFragments.TwoFragment;
+import comvoroninlevan.httpsgithub.magicofnumbers.NumberFragments.ZeroFragment;
+
 /**
  * Created by Levan on 14.10.2017.
  */

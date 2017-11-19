@@ -1,4 +1,4 @@
-package comvoroninlevan.httpsgithub.magicofnumbers;
+package comvoroninlevan.httpsgithub.magicofnumbers.NumberFragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,13 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import comvoroninlevan.httpsgithub.magicofnumbers.MediaPlayerSingleton;
+import comvoroninlevan.httpsgithub.magicofnumbers.R;
+
 /**
- * Created by Levan on 15.10.2017.
+ * Created by Levan on 14.10.2017.
  */
 
-public class SixFragment extends Fragment {
+public class OneFragment extends Fragment {
 
-    public SixFragment() {}
+    public OneFragment() {}
 
     private MediaPlayerSingleton mediaPlayer = MediaPlayerSingleton.getInstance();
 
@@ -29,7 +32,7 @@ public class SixFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_one_to_zero, container, false);
 
         ImageView numberImg = (ImageView)rootView.findViewById(R.id.numberImg);
-        numberImg.setImageResource(R.drawable.six);
+        numberImg.setImageResource(R.drawable.one);
         numberImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,7 +45,7 @@ public class SixFragment extends Fragment {
 
     private void playAudio(){
         releaseMediaPlayer();
-        mediaPlayer.mediaPlayer = mediaPlayer.mediaPlayer.create(getActivity(), R.raw.six);
+        mediaPlayer.mediaPlayer = mediaPlayer.mediaPlayer.create(getActivity(), R.raw.one);
         mediaPlayer.mediaPlayer.start();
     }
 

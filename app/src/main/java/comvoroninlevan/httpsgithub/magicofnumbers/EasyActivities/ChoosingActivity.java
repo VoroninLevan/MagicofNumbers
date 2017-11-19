@@ -1,4 +1,4 @@
-package comvoroninlevan.httpsgithub.magicofnumbers;
+package comvoroninlevan.httpsgithub.magicofnumbers.EasyActivities;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,6 +12,10 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import comvoroninlevan.httpsgithub.magicofnumbers.MediaPlayerSingleton;
+import comvoroninlevan.httpsgithub.magicofnumbers.MenuActivities.EasyMenuActivity;
+import comvoroninlevan.httpsgithub.magicofnumbers.R;
 
 /**
  * Created by Levan on 15.10.2017.
@@ -84,6 +88,18 @@ public class ChoosingActivity extends AppCompatActivity {
         generateNewQuiz();
     }
 
+    private void hide() {
+        View decorView = getWindow().getDecorView();
+        // Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+        // Hide action bar
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
+    }
+
     private void setAudio(int answer){
         switch (answer){
             case 0:
@@ -119,24 +135,15 @@ public class ChoosingActivity extends AppCompatActivity {
         }
     }
 
-
-    private void hide() {
-        // Hide action bar
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-        }
-    }
-
     private void generateNewQuiz(){
         // From here new quiz starts to generate
-        ArrayList<Integer> idList = fillArray();
+        ArrayList<Integer> idList = fillArrayList();
         Random random = new Random();
         createImgIdList(idList, random);
 
     }
 
-    private ArrayList<Integer> fillArray(){
+    private ArrayList<Integer> fillArrayList(){
         // Fill ArrayList<Integer> with values 0-9
         ArrayList<Integer> list = new ArrayList<>();
         for(int x = 0; x < 10; x++){
@@ -150,7 +157,7 @@ public class ChoosingActivity extends AppCompatActivity {
         ArrayList<Integer> imgIdList = new ArrayList<>();
         for(int x = 0; x < 4; x++){
             int index = random.nextInt(intList.size());
-            imgIdList.add(x, getResId(intList.get(index)));
+            imgIdList.add(x, getDrawableId(intList.get(index)));
             if(x == 0){
                 answer = intList.get(index);
             }
@@ -164,7 +171,7 @@ public class ChoosingActivity extends AppCompatActivity {
         return list;
     }
 
-    private int getResId(int picker){
+    private int getDrawableId(int picker){
         // Get resource id of images 0-9
         switch (picker){
             case 0:

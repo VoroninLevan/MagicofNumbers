@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".FullscreenActivity"
+            android:name=".MenuActivities.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape"
             android:label="@string/app_name"
@@ -22,49 +22,73 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".EasyMenuActivity"
+            android:name=".MenuActivities.EasyMenuActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme">
         </activity>
         <activity
-            android:name=".NumbersActivity"
+            android:name=".EasyActivities.NumbersActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme">
         </activity>
         <activity
-            android:name=".ChoosingActivity"
+            android:name=".EasyActivities.ChoosingActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme">
         </activity>
         <activity
-            android:name=".DragAndDropActivity"
+            android:name=".EasyActivities.DragAndDropActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme">
         </activity>
         <activity
-            android:name=".NormalMenuActivity"
+            android:name=".MenuActivities.NormalMenuActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme">
         </activity>
         <activity
-            android:name=".AdditionActivity"
+            android:name=".NormalActivities.TwoSymbolActivityChooser"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme">
         </activity>
         <activity
-            android:name=".SubtractionActivity"
+            android:name=".NormalActivities.TwoSymbolActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme">
         </activity>
         <activity
-            android:name=".ComplexActivity"
+            android:name=".NormalActivities.AdditionSubtractionChooser"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
+            android:theme="@style/FullscreenTheme">
+        </activity>
+        <activity
+            android:name=".NormalActivities.AdditionActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
+            android:theme="@style/FullscreenTheme">
+        </activity>
+        <activity
+            android:name=".NormalActivities.SubtractionActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
+            android:theme="@style/FullscreenTheme">
+        </activity>
+        <activity
+            android:name=".NormalActivities.ComplexActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
+            android:theme="@style/FullscreenTheme">
+        </activity>
+        <activity
+            android:name=".MenuActivities.HardMenuActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme">

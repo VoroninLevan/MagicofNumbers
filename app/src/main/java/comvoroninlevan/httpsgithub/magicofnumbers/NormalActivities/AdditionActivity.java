@@ -1,4 +1,4 @@
-package comvoroninlevan.httpsgithub.magicofnumbers;
+package comvoroninlevan.httpsgithub.magicofnumbers.NormalActivities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.util.Random;
+
+import comvoroninlevan.httpsgithub.magicofnumbers.R;
 
 /**
  * Created by Levan on 06.10.2017.

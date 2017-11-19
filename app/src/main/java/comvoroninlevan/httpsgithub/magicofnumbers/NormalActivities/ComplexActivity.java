@@ -1,4 +1,4 @@
-package comvoroninlevan.httpsgithub.magicofnumbers;
+package comvoroninlevan.httpsgithub.magicofnumbers.NormalActivities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +10,8 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.Random;
+
+import comvoroninlevan.httpsgithub.magicofnumbers.R;
 
 /**
  * Created by Levan on 03.11.2017.

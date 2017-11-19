@@ -2,4 +2,59 @@
     <string name="app_name">Magic of Numbers</string>
 
     <string name="inputHint">\?</string>
+
+    // Numbers 0-9
+    <string name="zero">zero</string>
+    <string name="one">one</string>
+    <string name="two">two</string>
+    <string name="three">three</string>
+    <string name="four">four</string>
+    <string name="five">five</string>
+    <string name="six">six</string>
+    <string name="seven">seven</string>
+    <string name="eight">eight</string>
+    <string name="nine">nine</string>
+    // Numbers 10-19
+    <string name="ten">ten</string>
+    <string name="eleven">eleven</string>
+    <string name="twelve">twelve</string>
+    <string name="thirteen">thirteen</string>
+    <string name="fourteen">fourteen</string>
+    <string name="fifteen">fifteen</string>
+    <string name="sixteen">sixteen</string>
+    <string name="seventeen">seventeen</string>
+    <string name="eighteen">eighteen</string>
+    <string name="nineteen">nineteen</string>
+    // Numbers 20-90
+    <string name="twenty">twenty</string>
+    <string name="thirty">thirty</string>
+    <string name="forty">forty</string>
+    <string name="fifty">fifty</string>
+    <string name="sixty">sixty</string>
+    <string name="seventy">seventy</string>
+    <string name="eighty">eighty</string>
+    <string name="ninety">ninety</string>
+    // Numbers 20-29
+    <!--<string name="twenty">Twenty</string>
+    <string name="twentyOne">Twenty One</string>
+    <string name="twentyTwo">Twenty Two</string>
+    <string name="twentyThree">Twenty Three</string>
+    <string name="twentyFour">Twenty Four</string>
+    <string name="twentyFive">Twenty Five</string>
+    <string name="twentySix">Twenty Six</string>
+    <string name="twentySeven">Twenty Seven</string>
+    <string name="twentyEight">Twenty Eight</string>
+    <string name="twentyNine">Twenty Nine</string>
+    // Numbers 30-39
+    <string name="thirty">Thirty</string>
+    <string name="thirtyOne">Thirty One</string>
+    <string name="thirtyTwo">Thirty Two</string>
+    <string name="thirtyThree">Thirty Three</string>
+    <string name="thirtyFour">Thirty Four</string>
+    <string name="thirtyFive">Thirty Five</string>
+    <string name="thirtySix">Thirty Six</string>
+    <string name="thirtySeven">Thirty Seven</string>
+    <string name="thirtyEight">Thirty Eight</string>
+    <string name="thirtyNine">Thirty Nine</string>-->
+
 </resources>

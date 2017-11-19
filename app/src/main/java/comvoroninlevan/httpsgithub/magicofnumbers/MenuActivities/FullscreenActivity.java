@@ -1,10 +1,12 @@
-package comvoroninlevan.httpsgithub.magicofnumbers;
+package comvoroninlevan.httpsgithub.magicofnumbers.MenuActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import comvoroninlevan.httpsgithub.magicofnumbers.R;
 
 public class FullscreenActivity extends AppCompatActivity {
 
@@ -25,9 +27,8 @@ public class FullscreenActivity extends AppCompatActivity {
                 startActivity(easyMenuActivity);
                 break;
             case R.id.toNormal:
-                //TODO
-                //Intent normalMenuActivity = new Intent(FullscreenActivity.this, NormalMenuActivity.class);
-                //startActivity(normalMenuActivity);
+                Intent normalMenuActivity = new Intent(FullscreenActivity.this, NormalMenuActivity.class);
+                startActivity(normalMenuActivity);
                 break;
             case R.id.toHard:
                 //TODO
@@ -38,7 +39,11 @@ public class FullscreenActivity extends AppCompatActivity {
     }
 
     private void hide() {
-        // Hide UI
+        View decorView = getWindow().getDecorView();
+        // Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+        // Hide action bar
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
