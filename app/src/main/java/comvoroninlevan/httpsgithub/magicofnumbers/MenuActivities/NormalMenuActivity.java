@@ -6,8 +6,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import comvoroninlevan.httpsgithub.magicofnumbers.NormalActivities.ColChooser;
 import comvoroninlevan.httpsgithub.magicofnumbers.NormalActivities.AdditionSubtractionChooser;
-import comvoroninlevan.httpsgithub.magicofnumbers.NormalActivities.ComplexActivity;
 import comvoroninlevan.httpsgithub.magicofnumbers.NormalActivities.TwoSymbolActivityChooser;
 import comvoroninlevan.httpsgithub.magicofnumbers.R;
 
@@ -37,7 +37,7 @@ public class NormalMenuActivity extends AppCompatActivity {
                 startActivity(dragAndDropActivity);
                 break;
             case R.id.choosing:
-                Intent choosingActivity = new Intent(NormalMenuActivity.this, ComplexActivity.class);
+                Intent choosingActivity = new Intent(NormalMenuActivity.this, ColChooser.class);
                 startActivity(choosingActivity);
                 break;
         }

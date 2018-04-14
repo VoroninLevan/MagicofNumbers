@@ -1,4 +1,4 @@
-package comvoroninlevan.httpsgithub.magicofnumbers.NormalActivities;
+package comvoroninlevan.httpsgithub.magicofnumbers.HardActivities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

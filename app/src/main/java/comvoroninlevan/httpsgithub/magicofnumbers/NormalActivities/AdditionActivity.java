@@ -120,10 +120,14 @@ public class AdditionActivity extends AppCompatActivity {
         generateQuiz();
     }
 
-    private void hide(){
-        // Hide UI
+    private void hide() {
+        View decorView = getWindow().getDecorView();
+        // Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+        // Hide action bar
         ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
+        if (actionBar != null) {
             actionBar.hide();
         }
     }

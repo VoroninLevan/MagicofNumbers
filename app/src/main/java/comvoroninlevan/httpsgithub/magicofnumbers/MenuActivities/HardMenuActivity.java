@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import comvoroninlevan.httpsgithub.magicofnumbers.HardActivities.MultiplicationTableChooser;
+import comvoroninlevan.httpsgithub.magicofnumbers.HardActivities.ComplexActivity;
 import comvoroninlevan.httpsgithub.magicofnumbers.R;
 
 /**
@@ -31,11 +32,11 @@ public class HardMenuActivity extends AppCompatActivity {
                 startActivity(numbersActivity);
                 break;
             case R.id.dragAndDrop:
-                /*Intent dragAndDropActivity = new Intent(HardMenuActivity.this, DragAndDropActivity.class);
-                startActivity(dragAndDropActivity);*/
+                Intent dragAndDropActivity = new Intent(HardMenuActivity.this, ComplexActivity.class);
+                startActivity(dragAndDropActivity);
                 break;
             case R.id.choosing:
-                /*Intent choosingActivity = new Intent(HardMenuActivity.this, ChoosingActivity.class);
+                /*Intent choosingActivity = new Intent(HardMenuActivity.this, ComplexActivity.class);
                 startActivity(choosingActivity);*/
                 break;
         }

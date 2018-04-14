@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/topNumHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/start"
+                android:src="@mipmap/ic_launcher" />
+
+            <ImageView
+                android:id="@+id/topNumOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/topNumHint"
+                android:layout_toEndOf="@id/start"
+                android:src="@mipmap/ic_launcher" />
+
+            <ImageView
+                android:id="@+id/topNumTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/topNumHint"
+                android:layout_toEndOf="@id/topNumOne"
+                android:src="@mipmap/ic_launcher" />
+
+            <ImageView
+                android:id="@+id/sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/topNumTwo"
+                android:src="@mipmap/ic_launcher" />
+
+            <ImageView
+                android:id="@+id/bottomNumOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/topNumTwo"
+                android:layout_toEndOf="@id/sign"
+                android:src="@mipmap/ic_launcher" />
+
+            <ImageView
+                android:id="@+id/bottomNumTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/topNumTwo"
+                android:layout_toEndOf="@id/bottomNumOne"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/divider"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_below="@id/bottomNumTwo"
+                android:layout_toEndOf="@id/sign"
+                android:layout_alignStart="@id/bottomNumOne"
+                android:layout_alignEnd="@+id/bottomNumTwo"
+                android:background="#000000" />
+
+            <ImageView
+                android:id="@+id/resultNumOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider"
+                android:layout_toEndOf="@id/sign"
+                android:src="@mipmap/ic_launcher" />
+
+            <ImageView
+                android:id="@+id/resultNumTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider"
+                android:layout_toEndOf="@id/resultNumOne"
+                android:src="@mipmap/ic_launcher" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/firstBlock"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true">
+
+            <ImageButton
+                android:id="@+id/one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/one"
+                android:onClick="getNumber"/>
+
+            <ImageButton
+                android:id="@+id/two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/two"
+                android:onClick="getNumber"/>
+
+            <ImageButton
+                android:id="@+id/three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/three"
+                android:onClick="getNumber"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/secondBlock"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/firstBlock">
+
+            <ImageButton
+                android:id="@+id/four"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/four"
+                android:onClick="getNumber"/>
+
+            <ImageButton
+                android:id="@+id/five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/five"
+                android:onClick="getNumber"/>
+
+            <ImageButton
+                android:id="@+id/six"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/six"
+                android:onClick="getNumber"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/thirdBlock"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/secondBlock">
+
+            <ImageButton
+                android:id="@+id/seven"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/seven"
+                android:onClick="getNumber"/>
+
+            <ImageButton
+                android:id="@+id/eight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/eight"
+                android:onClick="getNumber"/>
+
+            <ImageButton
+                android:id="@+id/nine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/nine"
+                android:onClick="getNumber"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/forthBlock"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/thirdBlock">
+
+            <ImageButton
+                android:id="@+id/zero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/zero"
+                android:onClick="getNumber"/>
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:onClick="checkAnswer"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
